@@ -32,6 +32,8 @@ const SignUp = () => {
   const handleCadastro = () => {
     if(!username || !email || !telefone || !senha || !foto ){
       setError('Campos vazios ou incompletos. Tente novamente!');
+    }else if(senha.length < 6){
+      setError('A senha deve ter 6 ou mais caracteres!');
     }else{
       createUser();
     }
