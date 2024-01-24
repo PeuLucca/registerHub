@@ -1,3 +1,4 @@
+// Core
 import styled from "styled-components";
 
 export const ListContainer = styled.div`
@@ -25,10 +26,6 @@ export const StyledList = styled.ul`
   padding: 0;
 `;
 
-export const StyledListItem = styled.li`
-  margin-bottom: 20px;
-`;
-
 export const ItemContainer = styled.div`
   padding: 15px;
   border-radius: 8px;
@@ -54,6 +51,7 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 2;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;

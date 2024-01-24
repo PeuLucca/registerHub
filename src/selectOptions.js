@@ -3,4 +3,7 @@ export const estadosBrasil = [
     'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN',
     'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
 ];
-export const tiposContato = ['Telefone fixo', 'Telefone celular', 'Email', 'LinkedIn', 'Rede Social' , 'Outro'];
+export const tiposContato = [
+    'Telefone fixo', 'Telefone celular', 'Email', 'LinkedIn',
+    'Rede Social' , 'Outro'
+];

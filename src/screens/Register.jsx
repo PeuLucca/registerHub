@@ -8,7 +8,8 @@ import {
   Form,
   FormGroup,
   FormRow,
-  FormButton
+  FormButton,
+  SaveButtonContainer
 } from "../style/Register.style";
 import { FormLabel, ErrorMessage, SuccessMessage } from "../style/Login.style";
 
@@ -18,7 +19,7 @@ import Delete from "../layout/Delete";
 import Save from "../layout/Save";
 import Update from "../layout/Update";
 
-// SelectOptions
+// Select Options
 import { estadosBrasil, tiposContato } from "../selectOptions"
 
 // Firebase
@@ -64,27 +65,23 @@ const Register = () => {
       enderecos: '',
       contatos: '',
     };
-  
-    // Validar dados pessoais
+
     for (const key in dadosPessoais) {
       if (dadosPessoais[key] === '') {
         newErrors.dadosPessoais = 'Preencha todos os campos de dados pessoais!';
         setErrors(newErrors);
       }
     }
-  
-    // Validar endereços
+
     for (const endereco of enderecos) {
       for (const key in endereco) {
-        // Remova a validação para o campo 'complemento'
         if (key !== 'complemento' && endereco[key] === '') {
           newErrors.enderecos = 'Preencha todos os campos de endereços!';
           setErrors(newErrors);
         }
       }
     }
-  
-    // Validar contatos
+
     for (const contato of contatos) {
       for (const key in contato) {
         if (contato[key] === '') {
@@ -112,6 +109,15 @@ const Register = () => {
       return `${match[1]}.${match[2]}.${match[3]}-${match[4]}`;
     }
     return cpfNumber;
+  };
+
+  const formatRg = (rgNumber) => {
+    const cleaned = ('' + rgNumber).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{2})(\d{3})(\d{3})(\d{1})$/);
+    if (match) {
+      return `${match[1]}.${match[2]}.${match[3]}-${match[4]}`;
+    }
+    return rgNumber;
   };
 
   const handleInputChange = (e, stateSetter, index, fieldName) => {
@@ -219,7 +225,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (state) {
+    if (state) { // if for edit (not new)
       const {
         pessoa: { nome, sobrenome, dataNascimento, email, cpf, rg },
         enderecos,
@@ -234,6 +240,7 @@ const Register = () => {
 
   return (
     <div>
+      <h2 style={{ textAlign: "center", textDecoration: "underline" }}>Cadastro de Pesoa Física</h2>
       <Form>
         <Container>
           {/* Dados Pessoais */}
@@ -293,7 +300,7 @@ const Register = () => {
                   type="text"
                   name="rg"
                   value={dadosPessoais.rg}
-                  onChange={(e) => setDadosPessoais((prevDados) => ({ ...prevDados, rg: e.target.value }))}
+                  onChange={(e) => setDadosPessoais((prevDados) => ({ ...prevDados, rg: formatRg(e.target.value) }))}
                 />
               </FormGroup>
             </FormRow>
@@ -443,23 +450,9 @@ const Register = () => {
 
         {success && <SuccessMessage>{success}</SuccessMessage>}
 
-        <FormButton
-          type="button"
-          onClick={validateForm}
-          style={{
-            fontSize: "15px",
-            fontWeight: "bold",
-            margin: "0 auto",
-            width: '90%',
-            marginTop: "1em"
-          }}
-        >
-          {
-            loading
-            ? <Update spin={true} />
-            : <>Salvar <Save /></>
-          }
-        </FormButton>
+        <SaveButtonContainer onClick={validateForm}>
+          {loading ? <Update style={{ fontSize: "23px" }} spin={true} /> : <Save style={{ fontSize: "23px" }} />}
+        </SaveButtonContainer>
       </Form>
     </div>
   );

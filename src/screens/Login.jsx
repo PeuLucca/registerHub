@@ -24,6 +24,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  // Handle Functions
   const handleLogin = () => {
     if (email === '' || password === '') {
       setError('Credenciais inválidas. Tente novamente.');
@@ -32,6 +33,7 @@ const Login = () => {
     }
   };
 
+  // Firebase
   const validateUser = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);

@@ -104,7 +104,7 @@ Dropper.defaultProps = {
 
 Dropper.propTypes = {
     handleFileChange: PropTypes.func,
-    selectedImage: PropTypes.string, // Pode ser uma URL base64 ou uma URL de arquivo
+    selectedImage: PropTypes.string,
     handleImageChange: PropTypes.func,
 };
 

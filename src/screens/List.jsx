@@ -11,7 +11,6 @@ import Update from "../layout/Update"
 import {
   ListContainer,
   StyledList,
-  StyledListItem,
   ItemContainer,
   ActionsContainer,
   Button,

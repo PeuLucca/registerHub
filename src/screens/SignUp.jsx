@@ -75,9 +75,8 @@ const SignUp = () => {
       const email_data = user.email;
 
       const imageRef = storageRef(storage, `profile-image/${uid_data}`);
-  
-      // Convert data URL to Blob
-      const blob = dataURLtoBlob(foto);
+
+      const blob = dataURLtoBlob(foto); // convert data URL to Blob
       await uploadBytes(imageRef, blob);
       const downloadURL = await getDownloadURL(imageRef);
 

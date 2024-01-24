@@ -20,13 +20,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Heading = styled.h2`
-  font-size: 30px;
-  color: grayText;
-  text-align: center;
-  margin-bottom: 0;
-`;
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -75,5 +68,25 @@ export const FormRow = styled.div`
 
   &:last-child {
     margin-bottom: 0;
+  }
+`;
+
+export const SaveButtonContainer = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #013220;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darkgreen;
   }
 `;
